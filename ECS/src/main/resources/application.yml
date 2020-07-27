@@ -1,19 +1,19 @@
 
 server:
-  port: 8080
+  port: 62407
  
 spring:
   datasource:
     username: root
-    password: root1234
-    url: jdbc:mysql://localhost:3319/neuoa?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    password: neusoft2020
+    url: cd-cdb-q9ik8mug.sql.tencentcdb.com
     driver-class-name: com.mysql.cj.jdbc.Driver
  
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.neusoft.oa.model
+  type-aliases-package: com.neusoft.ecs.model
  
 #showSql
 logging:
   level:
-    com.neusoft.oa.mapper : debug
+    com.neusoft.ecs.mapper : debug
