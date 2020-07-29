@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.neusoft.ecs.cm.mapper.IManufacturerMapper">
+
+	<resultMap id="ManufacturerResultMap" type="Manufacturer">
+		<id property="id" column="MFR_ID"/>
+		<result property="name" column="MFR_NAME"/>
+	</resultMap>
+ 
+ 	<!-- 基本的增删改查 -->
+	<insert id="insert" parameterType="Manufacturer">
+		INSERT INTO manufacturer (MFR_ID, MFR_NAME) VALUES (#{id}, #{name})
+	</insert>
+	
+	<update id="update" parameterType="Manufacturer">
+		UPDATE manufacturer SET MFR_NAME=#{name} WHERE MFR_ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Manufacturer">
+		DELETE FROM manufacturer WHERE MFR_ID=#{id} 
+	</delete>
+	
+	<select id="selectAll" resultType="Manufacturer" resultMap="ManufacturerResultMap">
+		SELECT * FROM manufacturer
+	</select>
+	
+	<select id="selectById" resultMap="ManufacturerResultMap">
+		SELECT * FROM manufacturer WHERE MFR_ID=#{id}
+	</select>
+
+</mapper>

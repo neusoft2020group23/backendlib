@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.neusoft.ecs.cm.mapper.ICommentMapper">
+
+	<resultMap id="CommentResultMap" type="Comment">
+		<id property="id" column="CMT_ID"/>
+		<result property="content" column="CMT_CONTENT"/>
+		<result property="date" column="CMT_DATE"/>
+		<result property="commenterId" column="CMT_CMTERID"/>
+		<result property="commodityId" column="CMT_COMMID"/>
+	</resultMap>
+ 
+ 	<!-- 基本的增删改查 -->
+	<insert id="insert" parameterType="Comment">
+		INSERT INTO comment 
+		(CMT_CONTENT, CMT_DATE, CMT_CMTERID, CMT_COMMID) 
+		VALUES 
+		(#{content}, #{date}, #{commenterId}, #{commodityId})
+	</insert>
+	
+	<update id="update" parameterType="Comment">
+		UPDATE comment SET 
+		CMT_CONTENT=#{content}, CMT_DATE=#{date}, CMT_CMTERID=#{commenterId}, CMT_COMMID=#{commodityId}
+		WHERE CMT_ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Comment">
+		DELETE FROM comment WHERE CMT_ID=#{id} 
+	</delete>
+	
+	<select id="selectAll" resultType="Comment" resultMap="CommentResultMap">
+		SELECT * FROM comment
+	</select>
+	
+	<select id="selectById" resultMap="CommentResultMap">
+		SELECT * FROM comment WHERE CMT_ID=#{id}
+	</select>
+
+</mapper>

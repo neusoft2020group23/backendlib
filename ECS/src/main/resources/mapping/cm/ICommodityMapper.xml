@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.neusoft.ecs.cm.mapper.ICommodityMapper">
+
+	<resultMap id="CommodityResultMap" type="Commodity">
+		<id property="id" column="COMM_ID"/>
+		<result property="name" 		column="COMM_NAME"/>
+		<result property="price" 		column="COMM_PRICE"/>
+		<result property="type" 		column="COMM_TYPE"/>
+		<result property="addedDate" 	column="COMM_ADDEDDATE"/>
+		<result property="image" 		column="COMM_IMAGE"/>
+		<result property="info" 		column="COMM_INFO"/>
+		<result property="stock" 		column="COMM_STOCK"/>
+		<result property="merchantId" 	column="COMM_MERCHID"/>
+	</resultMap>
+ 
+ 	<!-- 基本的增删改查 -->
+	<insert id="insert" parameterType="Commodity">
+		INSERT INTO commodity 
+		(COMM_NAME, COMM_PRICE, COMM_TYPE, COMM_ADDEDDATE, COMM_IMAGE, COMM_INFO, COMM_STOCK, COMM_MERCHID ) 
+		VALUES 
+		(#{name}, #{price}, #{type}, #{addedDate}, #{image}, #{info}, #{stock}, #{merchantId})
+	</insert>
+	
+	<update id="update" parameterType="Commodity">
+		UPDATE commodity SET 
+		COMM_NAME=#{name}, COMM_PRICE=#{price}, COMM_TYPE=#{type}, COMM_ADDEDDATE=#{addedDate}, 
+		COMM_IMAGE=#{image}, COMM_INFO=#{info}, COMM_STOCK=#{stock}, COMM_MERCHID=#{merchantId}
+		WHERE COMM_ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Commodity">
+		DELETE FROM commodity WHERE COMM_ID=#{id} 
+	</delete>
+	
+	<select id="selectAll" resultType="Commodity" resultMap="CommodityResultMap">
+		SELECT * FROM commodity
+	</select>
+	
+	<select id="selectById" resultMap="CommodityResultMap">
+		SELECT * FROM commodity WHERE COMM_ID=#{id}
+	</select>
+
+</mapper>

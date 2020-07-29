@@ -10,10 +10,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
  
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.neusoft.ecs.model
+  mapper-locations: classpath:mapping/**/*.xml
+  type-aliases-package: com.neusoft.ecs.cm.model
  
 #showSql
 logging:
   level:
-    com.neusoft.ecs.mapper : debug
+    com.neusoft.ecs: debug
