@@ -1,7 +1,5 @@
 package com.neusoft.ecs.cm.model;
 
-import java.util.List;
-
 import org.apache.ibatis.type.Alias;
 
 //商品管理模块 - 供应商信息 - model

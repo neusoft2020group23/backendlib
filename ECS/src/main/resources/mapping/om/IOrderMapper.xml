@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.neusoft.ecs.om.mapper.IOrderMapper">
+
+	<resultMap id="OrderResultMap" type="Order">
+		<id 	property="id" 			column="ORDER_ID"/>
+		<result property="commodityID" 	column="ORDER_COMMID"/>
+		<result property="num" 			column="ORDER_NUM"/>
+		<result property="address" 		column="ORDER_ADDRESS"/>
+		<result property="merchantId" 	column="ORDER_MERCHID"/>
+		<result property="buyerId" 		column="ORDER_BUYERID"/>
+		<result property="date" 		column="ORDER_DATE"/>
+		<result property="status" 		column="ORDER_STATUS"/>
+	</resultMap>
+ 
+ 	<!-- 基本的增删改查 -->
+	<insert id="insert" parameterType="Order">
+		INSERT INTO order 
+		(ORDER_COMMID, ORDER_NUM, ORDER_ADDRESS, ORDER_MERCHID, ORDER_BUYERID, ORDER_DATE, ORDER_STATUS) 
+		VALUES 
+		(#{commodityID}, #{num}, #{address}, #{merchantId}, #{buyerId}, #{date}, #{status})
+	</insert>
+	
+	<update id="update" parameterType="Order">
+		UPDATE order SET 
+		ORDER_COMMID=#{commodityID}, ORDER_NUM=#{num}, ORDER_ADDRESS=#{address}, ORDER_MERCHID=#{merchantId}, 
+		ORDER_BUYERID=#{buyerId}, ORDER_DATE=#{date}, ORDER_STATUS=#{status}
+		WHERE ORDER_ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Order">
+		DELETE FROM order WHERE ORDER_ID=#{id} 
+	</delete>
+	
+	<select id="selectAll" resultType="Order" resultMap="OrderResultMap">
+		SELECT * FROM order
+	</select>
+	
+	<select id="selectById" resultMap="OrderResultMap">
+		SELECT * FROM order WHERE ORDER_ID=#{id}
+	</select>
+
+</mapper>

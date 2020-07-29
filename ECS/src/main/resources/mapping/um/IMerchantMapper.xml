@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.neusoft.ecs.um.mapper.IMerchantMapper">
+
+	<resultMap id="MerchantResultMap" type="Merchant">
+		<id 	property="id" 		column="MERCH_ID"/>
+		<result property="name" 	column="MERCH_NAME"/>
+		<result property="password" column="MERCH_PASSWORD"/>
+	</resultMap>
+ 
+ 	<!-- 基本的增删改查 -->
+	<insert id="insert" parameterType="Merchant">
+		INSERT INTO merchant 
+		(MERCH_NAME, MERCH_PASSWORD) 
+		VALUES 
+		(#{name}, #{password})
+	</insert>
+	
+	<update id="update" parameterType="Merchant">
+		UPDATE merchant SET 
+		MERCH_NAME=#{name}, MERCH_PASSWORD=#{password}
+		WHERE MERCH_ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Merchant">
+		DELETE FROM merchant WHERE MERCH_ID=#{id} 
+	</delete>
+	
+	<select id="selectAll" resultType="Merchant" resultMap="MerchantResultMap">
+		SELECT * FROM merchant
+	</select>
+	
+	<select id="selectById" resultMap="MerchantResultMap">
+		SELECT * FROM merchant WHERE MERCH_ID=#{id}
+	</select>
+
+</mapper>

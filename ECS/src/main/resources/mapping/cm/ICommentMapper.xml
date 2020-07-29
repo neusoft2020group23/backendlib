@@ -7,11 +7,11 @@
 <mapper namespace="com.neusoft.ecs.cm.mapper.ICommentMapper">
 
 	<resultMap id="CommentResultMap" type="Comment">
-		<id property="id" column="CMT_ID"/>
-		<result property="content" column="CMT_CONTENT"/>
-		<result property="date" column="CMT_DATE"/>
-		<result property="commenterId" column="CMT_CMTERID"/>
-		<result property="commodityId" column="CMT_COMMID"/>
+		<id 	property="id" 			column="CMT_ID"/>
+		<result property="content" 		column="CMT_CONTENT"/>
+		<result property="date" 		column="CMT_DATE"/>
+		<result property="commenterId" 	column="CMT_CMTERID"/>
+		<result property="commodityId" 	column="CMT_COMMID"/>
 	</resultMap>
  
  	<!-- 基本的增删改查 -->

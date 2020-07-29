@@ -1,17 +1,17 @@
 
 server:
-  port: 62407
+  port: 8888
  
 spring:
   datasource:
     username: root
     password: neusoft2020
-    url: cd-cdb-q9ik8mug.sql.tencentcdb.com
+    url: cd-cdb-q9ik8mug.sql.tencentcdb.com:62407
     driver-class-name: com.mysql.cj.jdbc.Driver
  
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
-  type-aliases-package: com.neusoft.ecs.cm.model
+  type-aliases-package: com.neusoft.ecs.cm.model, com.neusoft.ecs.um.model, com.neusoft.ecs.om.model
  
 #showSql
 logging:

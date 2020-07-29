@@ -41,4 +41,6 @@ public class CommodityModel
 	public void setInfo(String info) { this.info = info; }
 	public int getStock() { return stock; }
 	public void setStock(int stock) { this.stock = stock; }
+	public String getType() { return type; }
+	public void setType(String type) { this.type = type; }
 }
